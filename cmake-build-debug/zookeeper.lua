@@ -19,13 +19,12 @@ function Connect( ctx )
 	end
 end
 
-function Create( path, data, len, acl_count, acl_string, type_string)
+function Create( path, data, len, acl_string, type_string)
 
 	paramTable = {}
 	paramTable ['path'] 		= path
 	paramTable ['data'] 		= data
 	paramTable ['len'] 			= len
-	paramTable ['acl_count'] 	= acl_count
 	paramTable ['acl_string'] 	= acl_string
 	paramTable ['type_string'] 	= type_string
 
@@ -37,7 +36,6 @@ end
 package = {}
 package ["zkConnect"] = Connect;
 package ["zkCreate"]  = Create;
-
 
 return package
 

@@ -172,6 +172,17 @@ static int lua_zookeeper_setData( lua_State *L );
 static int lua_zookeeper_asetData( lua_State *L );
 
 /**
+ * lua_zookeeper_exist
+ *
+ * @details check the node
+ * @param lua VM state
+ * ( lua_param_1: path,lua_param_2:watch[ 0 | 1])
+ * @return stat table and retCode
+ */
+
+static int lua_zookeeper_exist( lua_State *L );
+
+/**
  * lua_zookeeper_agetChildren
  *
  * @details get all children of a node
@@ -194,7 +205,7 @@ static int lua_zookeeper_getChildren( lua_State *L );
 static int lua_zookeeper_agetChildren( lua_State *L );
 
 /**
- * lua_zookeeper_setAcl
+ * lua_zookeeper_setAcl [Disabled]
  *
  * @details set privicy for a node
  * @param lua VM state
@@ -203,7 +214,7 @@ static int lua_zookeeper_agetChildren( lua_State *L );
     * ( lua_param_1: retCode )
  */
 
-static int lua_zookeeper_setAcl( lua_State *L );
+// static int lua_zookeeper_setAcl( lua_State *L );
 
 /**
  * lua_zookeeper_asetAcl

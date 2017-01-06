@@ -77,15 +77,12 @@ int main(int argc, char** argv){
 
     releaseMachine();
 
-    printf("Machine Realsed!");
-
     if( ret ){
         printf("Error in script:\n%s",luaL_checkstring(pMachine,-1));
         exit( -1 );
     }
 
     while(running){
-
         usleep(IDEL_PEROID);
     }
 

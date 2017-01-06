@@ -432,10 +432,21 @@ int lua_zookeeper_init(lua_State *L){
     lua_register( L, "ZKSet_Data", lua_zookeeper_setData);
     lua_register( L, "ZKASet_Data", lua_zookeeper_asetData);
 
+    lua_register( L, "ZKExist", lua_zookeeper_exist);
+
     lua_register( L, "ZKGet_Children", lua_zookeeper_getChildren);
     lua_register( L, "ZKAGet_Children", lua_zookeeper_agetChildren);
 
-    lua_register( L, "ZKSet_Acl", lua_zookeeper_setAcl);
+    // lua_register( L, "ZKSet_Acl", lua_zookeeper_setAcl);
+
+    /**
+     *
+     *  This function is disabled, please use the async version instead
+     *  It block the Watcher procedure and I dont known why :-(
+     *  maybe it`s related to the pMachine lock
+     *
+     */
+
     lua_register( L, "ZKASet_Acl", lua_zookeeper_asetAcl);
 
     lua_register( L, "ZKSetAuthSchema", lua_zookeeper_setAclSchema);
@@ -708,6 +719,26 @@ static int lua_zookeeper_asetData( lua_State *L ){
     return 1;
 }
 
+static int lua_zookeeper_exist( lua_State *L ){
+
+    const char * path = luaL_checkstring( L, -2 );
+    lua_Integer watch   = luaL_checkinteger( L, -1);
+
+    Stat stat;
+
+    if( NULL == zh){
+        lua_pushnil( L );
+    }else{
+
+        int ret = zoo_exists( zh,path, ( int ) watch, &stat);
+
+        lua_newtable( L );
+        lua_table_set_integer( L, "retCode", ret );
+        lua_push_table_Stat( L, &stat);
+    }
+    return 1;
+}
+
 static int lua_zookeeper_getChildren( lua_State *L ){
 
     String_vector sv;
@@ -754,7 +785,8 @@ static int lua_zookeeper_agetChildren( lua_State *L ){
     return 1;
 }
 
-static int lua_zookeeper_setAcl( lua_State *L ){
+// Disabled
+__attribute_used__ static int lua_zookeeper_setAcl( lua_State *L ){
 
     const char *path        = luaL_checkstring( L, -3 );
     lua_Integer version     = luaL_checkinteger( L, -2 );

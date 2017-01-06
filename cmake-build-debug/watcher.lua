@@ -19,8 +19,7 @@ function ConnectionWatcher( paramTable )
 			print("Unkown SESSION_EVENT ...")
 			ZKClose()
 		end
-    end
-
+	end
 end
 
 package = {}

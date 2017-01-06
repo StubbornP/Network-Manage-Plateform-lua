@@ -33,8 +33,6 @@ int init() {
 
     pthread_mutex_init(&Machine_Lock,NULL);
 
-
-
     luaL_openlibs( pMachine );
 
     lua_ctx_init( pMachine );
@@ -97,5 +95,3 @@ int main(int argc, char** argv){
 
     return 0;
 }
-
-

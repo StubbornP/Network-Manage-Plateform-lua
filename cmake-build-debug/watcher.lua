@@ -5,6 +5,12 @@ connectionWatcherSubscriber = {}
 --	t = ZKSet_Data("/test","123",4,1)( path,data,len,version)
 --	t = ZKASet_Data("/test","123",4,3,"SetDataEvent")
 --	ZKAGet_Data("/test",1,"GetDataEvent")(path,watch?[0 | 1],CompleteEvent)
+--	ZKSetAuthSchema( ctx.get("zookeeper.authSchema"), ctx.get("zookeeper.authId") )
+--	ZKSetDefaultAuthSchema( )
+--  ZKAddAuth( ctx.get("zookeeper.authSchema"), ctx.get("zookeeper.authId") )
+--  ZKError2String( errno )
+
+
 function ConnectionWatcher( paramTable )
 	state = paramTable["state_type"]
 	event = paramTable["event_type"]
@@ -26,9 +32,9 @@ function ConnectionWatcher( paramTable )
 		end
 	end
 
-	acl_string = "(digest:router1:YzRmOTM3NWY5ODM0YjRlN2YwYTUyOGNjNjVjMDU1NzAyYmY1ZjI0YQo=,crwad)\n(world:anyone,r)"
-	
-	zk.zkCreate("/path1","data", 4, 2, acl_string, "EPHEMERAL" )
+	ZKSetAuth( ctx.get("zookeeper.authSchema"), ctx.get("zookeeper.authDigest") )
+
+
 
 end
 

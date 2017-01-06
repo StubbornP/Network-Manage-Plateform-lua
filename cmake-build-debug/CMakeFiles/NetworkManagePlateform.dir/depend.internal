@@ -7,22 +7,22 @@ CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o
  .././include/lua_zookeeper.h
  .././include/nmp.h
  .././include/types.h
- /home/stubborn/CLionProjects/NetworkManagePlateform/src/lua_ctx.cpp
+ /home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_ctx.cpp
 CMakeFiles/NetworkManagePlateform.dir/src/lua_pcap.cpp.o
  .././include/lua_pcap.h
  .././include/types.h
- /home/stubborn/CLionProjects/NetworkManagePlateform/src/lua_pcap.cpp
+ /home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_pcap.cpp
 CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o
  .././include/lua_ctx.h
  .././include/lua_pcap.h
  .././include/lua_zookeeper.h
  .././include/nmp.h
  .././include/types.h
- /home/stubborn/CLionProjects/NetworkManagePlateform/src/lua_zookeeper.cpp
+ /home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_zookeeper.cpp
 CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o
  .././include/lua_ctx.h
  .././include/lua_pcap.h
  .././include/lua_zookeeper.h
  .././include/nmp.h
  .././include/types.h
- /home/stubborn/CLionProjects/NetworkManagePlateform/src/nmp.cpp
+ /home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.cpp

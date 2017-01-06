@@ -6,9 +6,9 @@
 function Connect( ctx )
 
 	zkServerAddr	= ctx.get("zookeeper.server")
-	zkUser		= ctx.get("zookeeper.user")
-	zkPasswd	= ctx.get("zookeeper.passwd")
-	zkTimeout	= ctx.get('zookeeper.timeout')
+	zkUser		    = ctx.get("zookeeper.user")
+	zkPasswd	    = ctx.get("zookeeper.passwd")
+	zkTimeout	    = ctx.get('zookeeper.timeout')
 	
 	if nil == zkServerAddr
 	then
@@ -16,7 +16,6 @@ function Connect( ctx )
 		return false
 	else
 		status = ZKConnect( zkServerAddr , zkTimeout)
-		os.execute("sleep 100")
 	end
 end
 
@@ -25,13 +24,14 @@ function Create( path, data, len, acl_count, acl_string, type_string)
 	paramTable = {}
 	paramTable ['path'] 		= path
 	paramTable ['data'] 		= data
-	paramTable ['len'] 		= len
+	paramTable ['len'] 			= len
 	paramTable ['acl_count'] 	= acl_count
 	paramTable ['acl_string'] 	= acl_string
 	paramTable ['type_string'] 	= type_string
 
-	ZKCreate( paramTable )
-
+	retCode, retPath = ZKCreate( paramTable )
+	
+	return retCode,retPath
 end
 
 package = {}

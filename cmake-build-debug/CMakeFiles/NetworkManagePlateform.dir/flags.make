@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/stubborn/CLionProjects/NetworkManagePlateform/./include 
+CXX_INCLUDES = -I/home/stubborn/CLionProjects/Network-Manage-Plateform/./include 
 

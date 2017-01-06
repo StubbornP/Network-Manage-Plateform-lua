@@ -19,7 +19,9 @@ int releaseMachine(){
     return  0;
 }
 
-
+void sig_term_handler( __attribute_used__ int n ){
+    running = 0;
+}
 
 int init() {
 
@@ -38,9 +40,22 @@ int init() {
     lua_ctx_init( pMachine );
 
     lua_zookeeper_init( pMachine );    //Init Zookeeper Connection Module ...
+
     lua_pcap_init( pMachine );         // Init Pcap Processing Module ...
 
     return 0;
+}
+
+int deinit(){
+
+    lua_State *L = aquireMachine();
+
+    lua_zookeeper_deinit( L );
+
+    releaseMachine();
+
+    return 0;
+
 }
 
 static int opt_routine( __attribute_used__ int argc, __attribute_used__ char** argv){
@@ -56,7 +71,15 @@ int main(int argc, char** argv){
 
     init();                     // Init the running environment
 
+    signal( SIGTERM, &sig_term_handler );
+
+    aquireMachine();
+
     int ret = luaL_dofile(pMachine,"./nmp.lua"); // Start the main script
+
+    releaseMachine();
+
+    printf("Machine Realsed!");
 
     if( ret ){
         printf("Error in script:\n%s",luaL_checkstring(pMachine,-1));
@@ -64,14 +87,15 @@ int main(int argc, char** argv){
     }
 
     while(running){
-        releaseMachine();
 
-        sleep(IDEL_PEROID);
-
-        aquireMachine();
+        usleep(IDEL_PEROID);
     }
+
+    deinit();
 
     lua_close( pMachine );
 
     return 0;
 }
+
+

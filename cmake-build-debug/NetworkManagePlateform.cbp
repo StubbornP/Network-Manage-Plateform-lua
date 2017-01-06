@@ -8,108 +8,112 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug"/>
+				<Option working_dir="/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug"/>
+				<Option working_dir="/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug"/>
+				<Option working_dir="/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="NetworkManagePlateform">
-				<Option output="/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/NetworkManagePlateform" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug"/>
+				<Option output="/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/NetworkManagePlateform" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/stubborn/CLionProjects/NetworkManagePlateform/./include"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include"/>
+					<Add directory="/home/stubborn/CLionProjects/Network-Manage-Plateform/./include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 NetworkManagePlateform"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 NetworkManagePlateform"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="NetworkManagePlateform/fast">
-				<Option output="/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/NetworkManagePlateform" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug"/>
+				<Option output="/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/NetworkManagePlateform" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/stubborn/CLionProjects/NetworkManagePlateform/./include"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include"/>
+					<Add directory="/home/stubborn/CLionProjects/Network-Manage-Plateform/./include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 NetworkManagePlateform/fast"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 NetworkManagePlateform/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/include/lua_ctx.h">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/include/lua_ctx.h">
 			<Option target="NetworkManagePlateform"/>
 		</Unit>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/include/lua_pcap.h">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/include/lua_pcap.h">
 			<Option target="NetworkManagePlateform"/>
 		</Unit>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/include/lua_zookeeper.h">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/include/lua_zookeeper.h">
 			<Option target="NetworkManagePlateform"/>
 		</Unit>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/include/nmp.h">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/include/nmp.h">
 			<Option target="NetworkManagePlateform"/>
 		</Unit>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/include/types.h">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/include/types.h">
 			<Option target="NetworkManagePlateform"/>
 		</Unit>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/src/lua_ctx.cpp">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_ctx.cpp">
 			<Option target="NetworkManagePlateform"/>
 		</Unit>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/src/lua_pcap.cpp">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_pcap.cpp">
 			<Option target="NetworkManagePlateform"/>
 		</Unit>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/src/lua_zookeeper.cpp">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_zookeeper.cpp">
 			<Option target="NetworkManagePlateform"/>
 		</Unit>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/src/nmp.cpp">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.cpp">
 			<Option target="NetworkManagePlateform"/>
 		</Unit>
-		<Unit filename="/home/stubborn/CLionProjects/NetworkManagePlateform/CMakeLists.txt">
+		<Unit filename="/home/stubborn/CLionProjects/Network-Manage-Plateform/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

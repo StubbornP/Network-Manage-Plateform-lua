@@ -1,3 +1,3 @@
-/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/stubborn/CLionProjects/NetworkManagePlateform/cmake-build-debug/CMakeFiles/NetworkManagePlateform.dir
+/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles/NetworkManagePlateform.dir

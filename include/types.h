@@ -8,6 +8,7 @@
 #include <map>
 #include <string>
 #include <lua.hpp>
+#include <signal.h>
 #include <unistd.h>
 #include <zookeeper/zookeeper.h>
 

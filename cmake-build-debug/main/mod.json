@@ -1,0 +1,10 @@
+[
+
+  {
+    "modName":"statMon",
+    "loadOnStartUp":true,
+    "modPath":"mod.statMon",
+    "initParam":null
+  }
+
+]

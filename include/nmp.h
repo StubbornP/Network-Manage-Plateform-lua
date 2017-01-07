@@ -19,8 +19,4 @@ int releaseMachine();
 
 int init();
 
-extern "C"{
-    #include "lpack.h"
-};
-
 #endif //NETWORKMANAGEPLATEFORM_NMP_H

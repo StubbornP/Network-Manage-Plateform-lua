@@ -6,17 +6,21 @@
 #define NETWORKMANAGEPLATEFORM_NMP_H
 
 #include "types.h"
+
 #include "lua_pcap.h"
 #include "lua_ctx.h"
 #include "lua_zookeeper.h"
 
 #define IDEL_PEROID 5000
 
-
-int init();
-
 lua_State *aquireMachine();
 
 int releaseMachine();
+
+int init();
+
+extern "C"{
+    #include "lpack.h"
+};
 
 #endif //NETWORKMANAGEPLATEFORM_NMP_H

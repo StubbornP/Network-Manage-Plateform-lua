@@ -35,6 +35,8 @@ int init() {
 
     luaL_openlibs( pMachine );
 
+    luaopen_pack( pMachine );
+
     lua_ctx_init( pMachine );
 
     lua_zookeeper_init( pMachine );    //Init Zookeeper Connection Module ...

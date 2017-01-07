@@ -124,6 +124,7 @@ inline void lua_push_table_Stat( lua_State *L, const Stat * stat){
  */
 
 static const char* state2String(int state){
+
     if (state == 0)
         return "CLOSED_STATE";
     if (state == ZOO_CONNECTING_STATE)
@@ -147,6 +148,7 @@ static const char* state2String(int state){
  */
 
 static const char* type2String(int state){
+
     if (state == ZOO_CREATED_EVENT)
         return "CREATED_EVENT";
     if (state == ZOO_DELETED_EVENT)
@@ -214,7 +216,7 @@ void void_completion(int rc, const void *luaCompletionEvent){
     lua_State *pMachine = aquireMachine();              // get the VM with pMachine locked
 
     lua_getglobal(pMachine,"completion");               // find the watcher table
-    lua_pushstring(pMachine,"CompletionRoutine");
+    lua_pushstring(pMachine,"completionRoutine");
     lua_gettable(pMachine,-2);                          // get the CompletionRoutine function
 
     lua_newtable( pMachine );                           // build the param table
@@ -242,7 +244,7 @@ void string_completion(int rc, const char *value, const void *luaCompletionEvent
     lua_State *pMachine = aquireMachine();              // get the VM with pMachine locked
 
     lua_getglobal(pMachine,"completion");               // find the watcher table
-    lua_pushstring(pMachine,"CompletionRoutine");
+    lua_pushstring(pMachine,"completionRoutine");
     lua_gettable(pMachine,-2);                          // get the CompletionRoutine function
 
     lua_newtable( pMachine );                           // build the param table
@@ -272,7 +274,7 @@ void strings_completion(int rc, const struct String_vector *strings, const struc
     lua_State *pMachine = aquireMachine();              // get the VM with pMachine locked
 
     lua_getglobal(pMachine,"completion");               // find the watcher table
-    lua_pushstring(pMachine,"CompletionRoutine");
+    lua_pushstring(pMachine,"completionRoutine");
     lua_gettable(pMachine,-2);                          // get the CompletionRoutine function
 
     lua_newtable( pMachine );                           // build the param table
@@ -314,7 +316,7 @@ void stat_completion(int rc, const struct Stat *stat, const void *luaCompletionE
     lua_State *pMachine = aquireMachine();              // get the VM with pMachine locked
 
     lua_getglobal(pMachine,"completion");               // find the watcher table
-    lua_pushstring(pMachine,"CompletionRoutine");
+    lua_pushstring(pMachine,"completionRoutine");
     lua_gettable(pMachine,-2);                          // get the CompletionRoutine function
 
     lua_newtable( pMachine );                           // build the param table
@@ -345,7 +347,7 @@ void data_completion(int rc, const char *value, int value_len,
     lua_State *pMachine = aquireMachine();              // get the VM with pMachine locked
 
     lua_getglobal(pMachine,"completion");               // find the watcher table
-    lua_pushstring(pMachine,"CompletionRoutine");
+    lua_pushstring(pMachine,"completionRoutine");
     lua_gettable(pMachine,-2);                          // get the CompletionRoutine function
 
     lua_newtable( pMachine );                           // build the param table
@@ -387,7 +389,7 @@ void ConnectionWatcher(zhandle_t *zzh, int type, int state, const char *path,
     lua_State *pMachine = aquireMachine();              // get the VM with pMachine locked
 
     lua_getglobal(pMachine, "watcher");                  // find the watcher table
-    lua_pushstring(pMachine, "ConnectionWatcher");
+    lua_pushstring(pMachine, "connectionWatcher");
     lua_gettable(pMachine, -2);                          // get the ConnectionWatcher function
 
     lua_newtable(pMachine);                             // push the param table as the function argument

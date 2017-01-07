@@ -73,7 +73,7 @@ int main(int argc, char** argv){
 
     aquireMachine();
 
-    int ret = luaL_dofile(pMachine,"./nmp.lua"); // Start the main script
+    int ret = luaL_dofile(pMachine,"./main/nmp.lua"); // Start the main script
 
     releaseMachine();
 

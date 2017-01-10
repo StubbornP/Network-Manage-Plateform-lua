@@ -16,10 +16,10 @@ local function defaultContext()
 	
 	clear()
 
+	ctxSet("system.WorkingMode","offline")
 	ctxSet("system.DeviceType","Router")
     ctxSet("system.nickName","MyRouter1")
     ctxSet("system.Id","6ef04ccc-7e49-4086-bc4d-1daec3f5ba01")
-
 
 	ctxSet("zookeeper.debug", 0)
 	ctxSet("zookeeper.timeout", 300000)

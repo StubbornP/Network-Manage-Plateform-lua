@@ -36,85 +36,6 @@ ACL_vector acl_priv = {
 
 // ----------------------------------- Built-in -----------------------------------
 
-inline int lua_table_set_integer( lua_State *L, const char *key, lua_Integer value){
-
-    lua_pushstring( L, key);
-    lua_pushinteger( L, value);
-    lua_settable( L, -3);
-
-    return 0;
-}
-
-__attribute_used__  inline int lua_table_set_number( lua_State *L, const char *key, lua_Number value){
-    lua_pushstring( L, key);
-    lua_pushnumber( L, value);
-    lua_settable( L, -3);
-
-    return 0;
-}
-
-inline int lua_table_set_string( lua_State *L, const char *key, const char *value){
-
-    lua_pushstring( L, key);
-    lua_pushstring( L, value);
-    lua_settable( L, -3);
-
-    return 0;
-}
-
-inline int lua_table_set_string_idx( lua_State *L, int key, const char *value){
-
-    lua_pushinteger( L, key);
-    lua_pushstring( L, value);
-    lua_settable( L, -3);
-
-    return 0;
-}
-
-inline const char *lua_table_get_string( lua_State *L, const char *key){
-
-    const char *ret;
-
-    lua_pushstring( L, key);
-    lua_gettable( L, -2);
-
-    ret = luaL_checkstring( L, -1);
-
-    lua_pop( L , 1 );
-
-    return ret;
-}
-
-inline const lua_Integer lua_table_get_int( lua_State *L, const char *key){
-    lua_Integer  ret;
-
-    lua_pushstring( L, key);
-    lua_gettable( L, -2);
-
-    ret = luaL_checkinteger( L, -1);
-
-    lua_pop( L , 1 );
-
-    return ret;
-}
-
-inline void lua_push_table_Stat( lua_State *L, const Stat * stat){
-
-    lua_table_set_integer( L, "czxid", stat ->czxid);
-    lua_table_set_integer( L, "mzxid", stat ->mzxid);
-    lua_table_set_integer( L, "ctime", stat ->ctime);
-    lua_table_set_integer( L, "mtime", stat ->mtime);
-    lua_table_set_integer( L, "version", stat ->version);
-    lua_table_set_integer( L, "cversion", stat ->cversion);
-    lua_table_set_integer( L, "aversion", stat ->aversion);
-    lua_table_set_integer( L, "ephemeralOwner", stat ->ephemeralOwner);
-    lua_table_set_integer( L, "dataLength", stat ->dataLength);
-    lua_table_set_integer( L, "numChildren", stat ->numChildren);
-    lua_table_set_integer( L, "pzxid", stat ->pzxid);
-
-    return;
-}
-
 /**
  *
  * @name state2String
@@ -170,7 +91,6 @@ static const char* type2String(int state){
  * @param  pAclString
  * @return pinter to ACL_vector
  */
-
 
 ACL_vector *aclFromString( const char * pAclString){
 
@@ -231,7 +151,7 @@ void void_completion(int rc, const void *luaCompletionEvent){
     if( lua_pcall(pMachine,1,0,0) != LUA_OK){                   // procedure call
 
         const char * pc = lua_tostring(pMachine,-1);            // error occurred
-        printf("Error in Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
+        printf("Error in Void Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
     };
 
     lua_pop(pMachine, 1);   // pop the completion table
@@ -261,7 +181,7 @@ void string_completion(int rc, const char *value, const void *luaCompletionEvent
     if( lua_pcall(pMachine,1,0,0) != LUA_OK){                   // procedure call
 
         const char * pc = lua_tostring(pMachine,-1);            // error occurred
-        printf("Error in Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
+        printf("Error in String Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
     };
 
     lua_pop(pMachine, 1);   // pop the completion table
@@ -303,7 +223,7 @@ void strings_completion(int rc, const struct String_vector *strings, const struc
     if( lua_pcall(pMachine,1,0,0) != LUA_OK){                   // procedure call
 
         const char * pc = lua_tostring(pMachine,-1);            // error occurred
-        printf("Error in Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
+        printf("Error in Strings Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
     };
 
     lua_pop(pMachine, 1);   // pop the completion table
@@ -333,7 +253,7 @@ void stat_completion(int rc, const struct Stat *stat, const void *luaCompletionE
     if( lua_pcall(pMachine,1,0,0) != LUA_OK){                   // procedure call
 
         const char * pc = lua_tostring(pMachine,-1);            // error occurred
-        printf("Error in Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
+        printf("Error in State Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
     };
 
     lua_pop(pMachine, 1);   // pop the completion table
@@ -368,7 +288,7 @@ void data_completion(int rc, const char *value, int value_len,
     if( lua_pcall(pMachine,1,0,0) != LUA_OK){                   // procedure call
 
         const char * pc = lua_tostring(pMachine,-1);            // error occurred
-        printf("Error in Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
+        printf("Error in Data Completion C wrap[%s,%d]:%s\n",__FILE__,__LINE__,pc);
     };
 
     lua_pop(pMachine, 1);   // pop the completion table
@@ -377,7 +297,7 @@ void data_completion(int rc, const char *value, int value_len,
 }
 
 void ConnectionWatcher(zhandle_t *zzh, int type, int state, const char *path,
-                       __attribute_used__  void* context) {
+                         void* ) {
 
     const char *event_type = type2String(type);
     const char *state_type = state2String(state);
@@ -463,7 +383,7 @@ int lua_zookeeper_init(lua_State *L){
     return ret;
 }
 
-int lua_zookeeper_deinit( __attribute_used__ lua_State *L ){
+int lua_zookeeper_deInit( lua_State * ){
 
     int ret = 0;
 
@@ -871,13 +791,13 @@ static int lua_zookeeper_addAuth( lua_State *L ){
 
 static int lua_zookeeper_error2String( lua_State *L ){
 
-    const char * pstr;
+    const char * pStr;
 
     lua_Integer eno = luaL_checkinteger( L, -1);
 
-    pstr = zerror( ( int ) eno );
+    pStr = zerror( ( int ) eno );
 
-    lua_pushstring( L, pstr );
+    lua_pushstring( L, pStr );
 
     return 1;
 }

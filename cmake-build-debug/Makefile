@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/stubborn/clion/bin/cmake/bin/cmake
+CMAKE_COMMAND = /run/media/stubborn/d7b3cdc0-8e92-3c40-a780-f1287a800a43/clion-2016.3.2/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/stubborn/clion/bin/cmake/bin/cmake -E remove -f
+RM = /run/media/stubborn/d7b3cdc0-8e92-3c40-a780-f1287a800a43/clion-2016.3.2/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-b
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/stubborn/clion/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/run/media/stubborn/d7b3cdc0-8e92-3c40-a780-f1287a800a43/clion-2016.3.2/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -70,7 +70,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/stubborn/clion/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/run/media/stubborn/d7b3cdc0-8e92-3c40-a780-f1287a800a43/clion-2016.3.2/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -122,6 +122,33 @@ NetworkManagePlateform: cmake_check_build_system
 NetworkManagePlateform/fast:
 	$(MAKE) -f CMakeFiles/NetworkManagePlateform.dir/build.make CMakeFiles/NetworkManagePlateform.dir/build
 .PHONY : NetworkManagePlateform/fast
+
+src/lpack.o: src/lpack.c.o
+
+.PHONY : src/lpack.o
+
+# target to build an object file
+src/lpack.c.o:
+	$(MAKE) -f CMakeFiles/NetworkManagePlateform.dir/build.make CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o
+.PHONY : src/lpack.c.o
+
+src/lpack.i: src/lpack.c.i
+
+.PHONY : src/lpack.i
+
+# target to preprocess a source file
+src/lpack.c.i:
+	$(MAKE) -f CMakeFiles/NetworkManagePlateform.dir/build.make CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.i
+.PHONY : src/lpack.c.i
+
+src/lpack.s: src/lpack.c.s
+
+.PHONY : src/lpack.s
+
+# target to generate assembly for a file
+src/lpack.c.s:
+	$(MAKE) -f CMakeFiles/NetworkManagePlateform.dir/build.make CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.s
+.PHONY : src/lpack.c.s
 
 src/lua_ctx.o: src/lua_ctx.cpp.o
 
@@ -240,6 +267,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... NetworkManagePlateform"
+	@echo "... src/lpack.o"
+	@echo "... src/lpack.i"
+	@echo "... src/lpack.s"
 	@echo "... src/lua_ctx.o"
 	@echo "... src/lua_ctx.i"
 	@echo "... src/lua_ctx.s"

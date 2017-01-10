@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/stubborn/clion/bin/cmake/bin/cmake
+CMAKE_COMMAND = /run/media/stubborn/d7b3cdc0-8e92-3c40-a780-f1287a800a43/clion-2016.3.2/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/stubborn/clion/bin/cmake/bin/cmake -E remove -f
+RM = /run/media/stubborn/d7b3cdc0-8e92-3c40-a780-f1287a800a43/clion-2016.3.2/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -81,33 +81,9 @@ CMakeFiles/NetworkManagePlateform.dir/src/lua_pcap.cpp.o.provides: CMakeFiles/Ne
 CMakeFiles/NetworkManagePlateform.dir/src/lua_pcap.cpp.o.provides.build: CMakeFiles/NetworkManagePlateform.dir/src/lua_pcap.cpp.o
 
 
-CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o: CMakeFiles/NetworkManagePlateform.dir/flags.make
-CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o: ../src/nmp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o -c /home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.cpp
-
-CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.cpp > CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.i
-
-CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.cpp -o CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.s
-
-CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.requires:
-
-.PHONY : CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.requires
-
-CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.provides: CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.requires
-	$(MAKE) -f CMakeFiles/NetworkManagePlateform.dir/build.make CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.provides.build
-.PHONY : CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.provides
-
-CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.provides.build: CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o
-
-
 CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o: CMakeFiles/NetworkManagePlateform.dir/flags.make
 CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o: ../src/lua_zookeeper.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o -c /home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_zookeeper.cpp
 
 CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.i: cmake_force
@@ -131,7 +107,7 @@ CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o.provides.build: CM
 
 CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o: CMakeFiles/NetworkManagePlateform.dir/flags.make
 CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o: ../src/lua_ctx.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o -c /home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_ctx.cpp
 
 CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.i: cmake_force
@@ -153,25 +129,75 @@ CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o.provides: CMakeFiles/Net
 CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o.provides.build: CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o
 
 
+CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o: CMakeFiles/NetworkManagePlateform.dir/flags.make
+CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o: ../src/nmp.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o -c /home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.cpp
+
+CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.cpp > CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.i
+
+CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.cpp -o CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.s
+
+CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.requires:
+
+.PHONY : CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.requires
+
+CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.provides: CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.requires
+	$(MAKE) -f CMakeFiles/NetworkManagePlateform.dir/build.make CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.provides.build
+.PHONY : CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.provides
+
+CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.provides.build: CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o
+
+
+CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o: CMakeFiles/NetworkManagePlateform.dir/flags.make
+CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o: ../src/lpack.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o   -c /home/stubborn/CLionProjects/Network-Manage-Plateform/src/lpack.c
+
+CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stubborn/CLionProjects/Network-Manage-Plateform/src/lpack.c > CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.i
+
+CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stubborn/CLionProjects/Network-Manage-Plateform/src/lpack.c -o CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.s
+
+CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o.requires:
+
+.PHONY : CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o.requires
+
+CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o.provides: CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o.requires
+	$(MAKE) -f CMakeFiles/NetworkManagePlateform.dir/build.make CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o.provides.build
+.PHONY : CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o.provides
+
+CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o.provides.build: CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o
+
+
 # Object files for target NetworkManagePlateform
 NetworkManagePlateform_OBJECTS = \
 "CMakeFiles/NetworkManagePlateform.dir/src/lua_pcap.cpp.o" \
-"CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o" \
 "CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o" \
-"CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o"
+"CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o" \
+"CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o" \
+"CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o"
 
 # External object files for target NetworkManagePlateform
 NetworkManagePlateform_EXTERNAL_OBJECTS =
 
 NetworkManagePlateform: CMakeFiles/NetworkManagePlateform.dir/src/lua_pcap.cpp.o
-NetworkManagePlateform: CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o
 NetworkManagePlateform: CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o
 NetworkManagePlateform: CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o
+NetworkManagePlateform: CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o
+NetworkManagePlateform: CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o
 NetworkManagePlateform: CMakeFiles/NetworkManagePlateform.dir/build.make
 NetworkManagePlateform: /usr/local/lib/liblua.a
 NetworkManagePlateform: /usr/local/lib/libzookeeper_mt.so
 NetworkManagePlateform: CMakeFiles/NetworkManagePlateform.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable NetworkManagePlateform"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stubborn/CLionProjects/Network-Manage-Plateform/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable NetworkManagePlateform"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NetworkManagePlateform.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -180,9 +206,10 @@ CMakeFiles/NetworkManagePlateform.dir/build: NetworkManagePlateform
 .PHONY : CMakeFiles/NetworkManagePlateform.dir/build
 
 CMakeFiles/NetworkManagePlateform.dir/requires: CMakeFiles/NetworkManagePlateform.dir/src/lua_pcap.cpp.o.requires
-CMakeFiles/NetworkManagePlateform.dir/requires: CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.requires
 CMakeFiles/NetworkManagePlateform.dir/requires: CMakeFiles/NetworkManagePlateform.dir/src/lua_zookeeper.cpp.o.requires
 CMakeFiles/NetworkManagePlateform.dir/requires: CMakeFiles/NetworkManagePlateform.dir/src/lua_ctx.cpp.o.requires
+CMakeFiles/NetworkManagePlateform.dir/requires: CMakeFiles/NetworkManagePlateform.dir/src/nmp.cpp.o.requires
+CMakeFiles/NetworkManagePlateform.dir/requires: CMakeFiles/NetworkManagePlateform.dir/src/lpack.c.o.requires
 
 .PHONY : CMakeFiles/NetworkManagePlateform.dir/requires
 

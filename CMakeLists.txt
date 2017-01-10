@@ -4,7 +4,7 @@ project(NetworkManagePlateform)
 set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES src/lua_pcap.cpp src/lua_zookeeper.cpp src/lua_ctx.cpp src/nmp.cpp
-        include/lua_ctx.h include/lua_pcap.h include/lua_zookeeper.h include/nmp.h include/types.h   )
+        include/lua_ctx.h include/lua_pcap.h include/lua_zookeeper.h include/nmp.h include/types.h ./src/lpack.c include/lua_lpack.h)
 add_executable(NetworkManagePlateform ${SOURCE_FILES})
 include_directories(./include)
 

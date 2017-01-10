@@ -98,7 +98,6 @@ lua_Integer ctxGetIntegerL (const char *key){
     return  ret;
 }
 
-
 int ctxSetString( lua_State *L, const char *key, const char * value){
 
     lua_getglobal( L, "Context" );
@@ -123,6 +122,7 @@ int ctxSetStringL( const char *key, const char * value){
 
     return  0;
 }
+
 int ctxSetNumber( lua_State *L, const char *key, lua_Number value){
 
     lua_getglobal( L, "Context" );
@@ -174,6 +174,14 @@ int ctxSetIntegerL( const char *key, lua_Integer value){
 }
 
 int lua_ctx_init( lua_State *L){
+
+    lua_newtable( L );
+    lua_setglobal(L, "Context");
+
+    return 0;
+}
+
+int lua_ctx_deInit( lua_State *L){
 
     lua_newtable( L );
     lua_setglobal(L, "Context");

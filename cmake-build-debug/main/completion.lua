@@ -1,5 +1,4 @@
-package = {}
-meta	= {}
+local package = {}
 
 local completionSubscriber = {}
 
@@ -26,7 +25,7 @@ local function regiestCompletion( lua_Event, callback )
 
     table.insert( completionSubscriber, 1,info )
 
-    return 0
+    return
 end
 
 local function unregiestCompletion( lua_Event )
@@ -38,7 +37,7 @@ local function unregiestCompletion( lua_Event )
         end
     end
 
-    return 0
+    return
 end
 
 package ['completionRoutine'] = completionRoutine
@@ -54,7 +53,6 @@ local function aclCompletion( paramTable )
             logger:info( ""..k..": "..v)
         end
     end
-
 end
 
 local function init()
@@ -66,4 +64,3 @@ end
 init()
 
 return package
-	

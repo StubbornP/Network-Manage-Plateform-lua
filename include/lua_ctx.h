@@ -175,4 +175,17 @@ int ctxSetIntegerL( const char *key, lua_Integer value);
 
 int lua_ctx_init( lua_State *L);
 
+/**
+* @name lua_ctx_deinit
+*
+* @details deinit the ctx for the lua VM
+* @param
+        *      lua_State L
+        *
+* @return  0
+*
+*/
+
+int lua_ctx_deInit( lua_State *L);
+
 #endif //NETWORKMANAGEPLATEFORM_LUA_CONTEXT_H

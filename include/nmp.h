@@ -11,12 +11,18 @@
 #include "lua_ctx.h"
 #include "lua_zookeeper.h"
 
+extern "C"{
+
+#include "lua_lpack.h"
+
+};
+
 #define IDEL_PEROID 5000
 
 lua_State *aquireMachine();
 
 int releaseMachine();
 
-int init();
+int deInit();
 
 #endif //NETWORKMANAGEPLATEFORM_NMP_H

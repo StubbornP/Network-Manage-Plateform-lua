@@ -12,11 +12,19 @@ types.h
 nmp.h
 .././include/nmp.h
 
+.././include/lua_lpack.h
+lua.h
+-
+lauxlib.h
+-
+
 .././include/lua_pcap.h
-types.h
-.././include/types.h
 pcap.h
 -
+types.h
+.././include/types.h
+nmp.h
+.././include/nmp.h
 
 .././include/lua_zookeeper.h
 types.h
@@ -33,6 +41,8 @@ lua_ctx.h
 .././include/lua_ctx.h
 lua_zookeeper.h
 .././include/lua_zookeeper.h
+lua_lpack.h
+.././include/lua_lpack.h
 
 .././include/types.h
 map

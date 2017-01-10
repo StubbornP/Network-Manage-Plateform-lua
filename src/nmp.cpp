@@ -19,7 +19,20 @@ int releaseMachine(){
     return  0;
 }
 
-void sig_term_handler( __attribute_used__ int n ){
+int lua_relaxMachine(lua_State *L ){
+
+    lua_Integer uSec = luaL_checkinteger( L, -1);
+
+    pthread_mutex_unlock(&Machine_Lock);
+
+    usleep( ( __useconds_t )uSec );
+
+    pthread_mutex_lock(&Machine_Lock);
+
+    return 0;
+}
+
+void sig_term_handler( int /* n */ ){
     running = 0;
 }
 
@@ -35,6 +48,10 @@ int init() {
 
     luaL_openlibs( pMachine );
 
+    lua_register( pMachine, "relaxMachine", lua_relaxMachine);
+
+    luaopen_pack( pMachine );
+
     lua_ctx_init( pMachine );
 
     lua_zookeeper_init( pMachine );    //Init Zookeeper Connection Module ...
@@ -44,19 +61,20 @@ int init() {
     return 0;
 }
 
-int deinit(){
+int deInit(){
 
     lua_State *L = aquireMachine();
 
-    lua_zookeeper_deinit( L );
+    lua_ctx_deInit( L );
+    lua_zookeeper_deInit( L );
+    lua_pcap_deInit( L );
 
     releaseMachine();
 
     return 0;
-
 }
 
-static int opt_routine( __attribute_used__ int argc, __attribute_used__ char** argv){
+static int opt_routine( int /* argc*/, char** /* argv */){
 
     //OptGet Code Here!
 
@@ -86,7 +104,7 @@ int main(int argc, char** argv){
         usleep(IDEL_PEROID);
     }
 
-    deinit();
+    deInit();
 
     lua_close( pMachine );
 

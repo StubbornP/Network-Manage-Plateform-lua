@@ -8,6 +8,85 @@
 #include "types.h"
 #include "zookeeper/zookeeper.jute.h"
 
+inline int lua_table_set_integer( lua_State *L, const char *key, lua_Integer value){
+
+    lua_pushstring( L, key);
+    lua_pushinteger( L, value);
+    lua_settable( L, -3);
+
+    return 0;
+}
+
+__attribute_used__  inline int lua_table_set_number( lua_State *L, const char *key, lua_Number value){
+    lua_pushstring( L, key);
+    lua_pushnumber( L, value);
+    lua_settable( L, -3);
+
+    return 0;
+}
+
+inline int lua_table_set_string( lua_State *L, const char *key, const char *value){
+
+    lua_pushstring( L, key);
+    lua_pushstring( L, value);
+    lua_settable( L, -3);
+
+    return 0;
+}
+
+inline int lua_table_set_string_idx( lua_State *L, int key, const char *value){
+
+    lua_pushinteger( L, key);
+    lua_pushstring( L, value);
+    lua_settable( L, -3);
+
+    return 0;
+}
+
+inline const char *lua_table_get_string( lua_State *L, const char *key){
+
+    const char *ret;
+
+    lua_pushstring( L, key);
+    lua_gettable( L, -2);
+
+    ret = luaL_checkstring( L, -1);
+
+    lua_pop( L , 1 );
+
+    return ret;
+}
+
+inline const lua_Integer lua_table_get_int( lua_State *L, const char *key){
+    lua_Integer  ret;
+
+    lua_pushstring( L, key);
+    lua_gettable( L, -2);
+
+    ret = luaL_checkinteger( L, -1);
+
+    lua_pop( L , 1 );
+
+    return ret;
+}
+
+inline void lua_push_table_Stat( lua_State *L, const Stat * stat){
+
+    lua_table_set_integer( L, "czxid", stat ->czxid);
+    lua_table_set_integer( L, "mzxid", stat ->mzxid);
+    lua_table_set_integer( L, "ctime", stat ->ctime);
+    lua_table_set_integer( L, "mtime", stat ->mtime);
+    lua_table_set_integer( L, "version", stat ->version);
+    lua_table_set_integer( L, "cversion", stat ->cversion);
+    lua_table_set_integer( L, "aversion", stat ->aversion);
+    lua_table_set_integer( L, "ephemeralOwner", stat ->ephemeralOwner);
+    lua_table_set_integer( L, "dataLength", stat ->dataLength);
+    lua_table_set_integer( L, "numChildren", stat ->numChildren);
+    lua_table_set_integer( L, "pzxid", stat ->pzxid);
+
+    return;
+}
+
 //--------------------------- C API -------------------------------
 
 /**
@@ -22,15 +101,15 @@
 int lua_zookeeper_init(lua_State *L);
 
 /**
- * lua_zookeeper_deinit
+ * lua_zookeeper_deInit
  *
- * @details luaZookeeper MoD deinit
+ * @details luaZookeeper MoD deInit
  * @param   lua VM state
  *
  * @return  error code ( 0 if no error )
  */
 
-int lua_zookeeper_deinit(lua_State *L);
+int lua_zookeeper_deInit(lua_State *L);
 
 /**
  * zookeeper_zoo_State

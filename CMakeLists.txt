@@ -14,4 +14,4 @@ find_library(
         )
 SET(ZKLIB /usr/local/lib/libzookeeper_mt.so)
 
-target_link_libraries(NetworkManagePlateform ${LUALIB} ${ZKLIB} -lpthread -ldl)
+target_link_libraries(NetworkManagePlateform ${LUALIB} ${ZKLIB} -lpthread -ldl -lpcap)

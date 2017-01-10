@@ -29,6 +29,14 @@ ret = ZKASet_Acl("/node" , 1 , "Public", "AclSetEvent1")
 
 print ( ZKError2String( ret ) )
 
+ret = pcapOpenDev("wlp3s0",0)
+print("pcap:"..ret)
+
+if "Ok" == ret then
+    dl = pcapDatalinkType()
+    print( dl )
+end
+
 print("Woring ENV Init DONE ... the VM Lock will be released ... ")
 
 

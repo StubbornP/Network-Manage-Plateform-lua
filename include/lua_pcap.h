@@ -6,6 +6,8 @@
 #define NETWORKMANAGEPLATEFORM_LUA_PCAP_H
 
 #include "types.h"
+#include <pcap.h>
+
 
 /**
  *

@@ -7,7 +7,13 @@ function package.CompletionRoutine( completion )
 	for k,v in pairs( completion )
 	do
 		if type( v ) == "number" or type( v ) == "string" then
-			print( ""..k..": "..v)
+
+			if k == "retCode" then
+				print( ""..k..": ".. ZKError2String ( v ) )
+			else
+				print( ""..k..": "..v)
+			end
+
 		end
 	end
 end

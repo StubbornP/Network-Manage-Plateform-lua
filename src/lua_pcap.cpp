@@ -10,14 +10,16 @@
 #define likely(x) __builtin_expect(!!(x), 1)
 #define unlikely(x) __builtin_expect(!!(x), 0)
 
-enum PcapState{
+typedef volatile enum PcapState{
     CLOSED = 0,
     PREPARED,
     RUNNING,
     CLOSING,
     ERROR,
     EXIT,
-} Mod_State;
+} Mod_State_t;
+
+Mod_State_t Mod_State;
 
 pcap_t *pcap = NULL;
 
@@ -27,7 +29,7 @@ bpf_u_int32 net = 0,mask = 0;
 pthread_t pcapThread;
 char lastError [PCAP_ERRBUF_SIZE] = {0};
 
-const char *PcapState2String( enum PcapState Stat){
+const char *PcapState2String( volatile enum PcapState Stat){
 
     switch ( Stat ){
         case CLOSED:
@@ -98,7 +100,7 @@ void packet_Handle(u_char *, const struct pcap_pkthdr *pcap_pkthdr,
     releaseMachine();       // release lua VM
 }
 
-void inline stateSwitchL( enum PcapState stat){
+void inline stateSwitchL( volatile enum PcapState stat){
 
     lua_State *pMachine = aquireMachine();
 
@@ -108,7 +110,7 @@ void inline stateSwitchL( enum PcapState stat){
     releaseMachine();       // release lua VM
 }
 
-void inline stateSwitch(lua_State *L, enum PcapState stat){
+void inline stateSwitch(lua_State *L, volatile enum PcapState stat){
 
     Mod_State = stat;
     PcapWatcher( L, "pcapModStateChanged");
@@ -162,11 +164,10 @@ void *pcap_thread(  void* ){
                 break;
             }
             case EXIT:
-                goto ret;
+                return NULL;
         }
     }
 
-    ret:
     return NULL;
 }
 
@@ -363,11 +364,10 @@ int lua_pcap_init( lua_State *L ){
     return 0;
 }
 
-int lua_pcap_deInit( lua_State * ){
+int lua_pcap_deInit( ){
 
     Mod_State = EXIT;
     pthread_join( pcapThread, NULL );
-
 
     return 0;
 }

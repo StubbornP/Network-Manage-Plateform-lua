@@ -1,47 +1,63 @@
 logger      = require "main.log"
 json 		= require "thirdparty.dkjson"
 ctx 		= require "main.ctx"
-zk		    = require "main.zookeeper"
-watcher 	= require "main.watcher"
+
 completion 	= require "main.completion"
+watcher 	= require "main.watcher"
+
+zk		    = require "main.zookeeper"
 pcap     	= require "main.pcap"
+
+monManager  = require "main.modManager"
 
 ctx.defaultCtx( )
 
-if ctx.get( "system.WorkingMode" ) == "online" then
-    zk.zkConnect( )
+
+local function defaultSessionWacherCallback( state, _, _ )
+    if state == "CONNECTED_STATE" then
+        logger:info("Connection Established Successfully ...")
+    elseif state == "AUTH_FAILED_STATE" then
+        logger:warning("Authentication failure. Shutting down ...")
+    elseif state == "EXPIRED_SESSION_STATE" then
+        logger:warning("Session expired. Shutting down ...")
+        zk.Close()
+    else
+        logger:error("Unkown SESSION_EVENT ...")
+        zk.Close()
+    end
 end
 
-logger:info("Working ENV Init DONE ... the VM Lock will be released ... ")
+local function defaultPcapWacherCallback( state, _, _ )
 
-local function packetProc( paramTable )
-
-    logger:info("Packet_Size:"..paramTable['len'])
-    pcap.analysePacket( paramTable['data'], paramTable['len'], nil, nil)
-
+    logger:info("PcapWatcher State Changed to: "..state.."Timestamp:"..os.time())
 end
 
-ret = pcap.openFile( "./test.pcap" )
+watcher.Register( "defaultSession", "SESSION_EVENT",defaultSessionWacherCallback)
+watcher.Register( "defaultPcap", "pcapModStateChanged",defaultPcapWacherCallback)
 
--- ret = pcap.openDevice( "wlp3s0", 0 )
+print( ctx.get( "zookeeper.enableOnStartup" ) )
 
-err = pcap.getLastError()
+if ctx.get( "zookeeper.enableOnStartup" ) == true then
+    zk.connect( )
+end
 
-print( err )
+local state = pcap.ModStart()
 
-if "PREPARED" == ret then
-    pcap.registerSubscriber("test",packetProc)
+monManager.init()
+
+logger:info("Working ENV Init DONE ... the VM lock will be released ... ")
+
+if "PREPARED" == state then
     pcap.startCap()
 end
 
-print("the current state is:"..pcap.getModState())
+logger:info( "pcap Mod State:" ..  pcap.getLastError() )
 
-for i = 0,100000,1
-do
-    relaxMachine( 1000000 )
-end
+monManager.monManagerRoutine()
 
-print("try to close pcap ")
 pcap.close()
+zk.close()
 
+monManager.relaxMachine( 5000000 )
 
+monManager.shutdown()

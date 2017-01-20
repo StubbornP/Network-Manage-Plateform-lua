@@ -181,10 +181,14 @@ int lua_ctx_init( lua_State *L){
     return 0;
 }
 
-int lua_ctx_deInit( lua_State *L){
+int lua_ctx_deInit( ){
+
+    lua_State *L = aquireMachine();
 
     lua_newtable( L );
     lua_setglobal(L, "Context");
+
+    releaseMachine();
 
     return 0;
 }

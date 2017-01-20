@@ -179,13 +179,11 @@ int lua_ctx_init( lua_State *L);
 * @name lua_ctx_deinit
 *
 * @details deinit the ctx for the lua VM
-* @param
-        *      lua_State L
-        *
+* @param    null
 * @return  0
 *
 */
 
-int lua_ctx_deInit( lua_State *L);
+int lua_ctx_deInit( );
 
 #endif //NETWORKMANAGEPLATEFORM_LUA_CONTEXT_H

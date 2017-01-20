@@ -24,11 +24,11 @@ int lua_pcap_init( lua_State *L );
  * lua_pcap_deInit
  *
  * @details pcap MoD deInit
- * @param   lua VM state
+ * @param   null
  *
  * @return  error code ( 0 if no error )
  */
 
-int lua_pcap_deInit( lua_State *L);
+int lua_pcap_deInit( );
 
 #endif //NETWORKMANAGEPLATEFORM_LUA_PCAP_H

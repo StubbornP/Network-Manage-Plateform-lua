@@ -6,7 +6,7 @@ local function completionRoutine( paramTable )
 
     for _,v in pairs( completionSubscriber )
     do
-        if ( not( nil == v or nil == v['callback'] )
+        if ( not( nil == v) and 'function' == type(v['callback'])
             and paramTable['lua_Event'] ==  v ['lua_Event'] ) then
 
             local cb = v['callback']
@@ -42,25 +42,7 @@ end
 
 package ['completionRoutine'] = completionRoutine
 
-package ['registerCompletion'] = regiestCompletion
-package ['unregisterCompletion'] = unregiestCompletion
-
-local function aclCompletion( paramTable )
-
-    for k,v in pairs( paramTable )
-    do
-        if type( v ) == "number" or type( v ) == "string" then
-            logger:info( ""..k..": "..v)
-        end
-    end
-end
-
-local function init()
-
-    regiestCompletion("AclSetEvent1",aclCompletion)
-
-end
-
-init()
+package ['register'] = regiestCompletion    -- ( event, callback )
+package ['unregiser'] = unregiestCompletion -- ( event )
 
 return package

@@ -104,12 +104,12 @@ int lua_zookeeper_init(lua_State *L);
  * lua_zookeeper_deInit
  *
  * @details luaZookeeper MoD deInit
- * @param   lua VM state
+ * @param   null
  *
  * @return  error code ( 0 if no error )
  */
 
-int lua_zookeeper_deInit(lua_State *L);
+int lua_zookeeper_deInit( );
 
 /**
  * zookeeper_zoo_State
@@ -251,15 +251,15 @@ static int lua_zookeeper_setData( lua_State *L );
 static int lua_zookeeper_asetData( lua_State *L );
 
 /**
- * lua_zookeeper_exist
+ * lua_zookeeper_aExist
  *
  * @details check the node
  * @param lua VM state
- * ( lua_param_1: path,lua_param_2:watch[ 0 | 1])
+ * ( lua_param_1: path,lua_param_2:watch[ 0 | 1], event )
  * @return stat table and retCode
  */
 
-static int lua_zookeeper_exist( lua_State *L );
+static int lua_zookeeper_aExist( lua_State *L );
 
 /**
  * lua_zookeeper_agetChildren

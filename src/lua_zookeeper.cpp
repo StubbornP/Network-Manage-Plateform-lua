@@ -241,7 +241,12 @@ void stat_completion(int rc, const struct Stat *stat, const void *luaCompletionE
 
     lua_newtable( pMachine );                           // build the param table
 
-    lua_push_table_Stat( pMachine, stat);               // push stat into the table
+    if( NULL == stat){
+        lua_table_set_integer( pMachine, "exist", 0);
+    }else{
+        lua_table_set_integer( pMachine, "exist", 1);
+        lua_push_table_Stat( pMachine, stat);               // push stat into the table
+    }
 
     lua_table_set_string( pMachine, \
     "completion_type", "stateCompletion");            // set the completion type
@@ -354,7 +359,7 @@ int lua_zookeeper_init(lua_State *L){
     lua_register( L, "ZKSet_Data", lua_zookeeper_setData);
     lua_register( L, "ZKASet_Data", lua_zookeeper_asetData);
 
-    lua_register( L, "ZKExist", lua_zookeeper_exist);
+    lua_register( L, "ZKAExist", lua_zookeeper_aExist);
 
     lua_register( L, "ZKGet_Children", lua_zookeeper_getChildren);
     lua_register( L, "ZKAGet_Children", lua_zookeeper_agetChildren);
@@ -383,13 +388,9 @@ int lua_zookeeper_init(lua_State *L){
     return ret;
 }
 
-int lua_zookeeper_deInit( lua_State * ){
+int lua_zookeeper_deInit( ){
 
-    int ret = 0;
-
-    ret = zookeeper_Close( zh );
-
-    return ret;
+    return 0;
 }
 
 const char *zookeeper_zoo_State(){
@@ -517,7 +518,6 @@ static int lua_zookeeper_create( lua_State *L ){
 
             lua_pushinteger( L, ret );
             lua_pushstring( L, path_buffer);
-
         }
     }
     return 2;
@@ -641,22 +641,18 @@ static int lua_zookeeper_asetData( lua_State *L ){
     return 1;
 }
 
-static int lua_zookeeper_exist( lua_State *L ){
+static int lua_zookeeper_aExist( lua_State *L ){
 
-    const char * path = luaL_checkstring( L, -2 );
-    lua_Integer watch   = luaL_checkinteger( L, -1);
-
-    Stat stat;
+    const char * path = luaL_checkstring( L, -3 );
+    lua_Integer watch = luaL_checkinteger( L, -2);
+    const char *event = luaL_checkstring( L, -1);
 
     if( NULL == zh){
         lua_pushnil( L );
     }else{
 
-        int ret = zoo_exists( zh,path, ( int ) watch, &stat);
-
-        lua_newtable( L );
-        lua_table_set_integer( L, "retCode", ret );
-        lua_push_table_Stat( L, &stat);
+        int ret = zoo_aexists( zh, path, ( int )watch, &stat_completion, event);
+        lua_pushinteger( L, ret );
     }
     return 1;
 }

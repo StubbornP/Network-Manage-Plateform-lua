@@ -5,7 +5,6 @@
 #include "types.h"
 #include "nmp.h"
 
-int         running   = 1;
 lua_State   *pMachine = NULL;
 pthread_mutex_t Machine_Lock;
 
@@ -30,10 +29,6 @@ int lua_relaxMachine(lua_State *L ){
     pthread_mutex_lock(&Machine_Lock);
 
     return 0;
-}
-
-void sig_term_handler( int /* n */ ){
-    running = 0;
 }
 
 int init() {
@@ -63,13 +58,9 @@ int init() {
 
 int deInit(){
 
-    lua_State *L = aquireMachine();
-
-    lua_ctx_deInit( L );
-    lua_zookeeper_deInit( L );
-    lua_pcap_deInit( L );
-
-    releaseMachine();
+    lua_ctx_deInit( );
+    lua_zookeeper_deInit( );
+    lua_pcap_deInit( );
 
     return 0;
 }
@@ -87,8 +78,6 @@ int main(int argc, char** argv){
 
     init();                     // Init the running environment
 
-    signal( SIGTERM, &sig_term_handler );
-
     aquireMachine();
 
     int ret = luaL_dofile(pMachine,"./main/nmp.lua"); // Start the main script
@@ -100,13 +89,11 @@ int main(int argc, char** argv){
         exit( -1 );
     }
 
-    while(running){
-        usleep(IDEL_PEROID);
-    }
-
     deInit();
 
     lua_close( pMachine );
+
+    usleep( 100000 );
 
     return 0;
 }

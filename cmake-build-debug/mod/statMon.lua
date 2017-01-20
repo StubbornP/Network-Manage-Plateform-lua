@@ -4,13 +4,13 @@ local AUTHOR = "STUBBORN"
 local VERSOIN = "1.0"
 
 local lastCommit
-local commitCycle = 2
+local commitCycle = 0
 local state
 local error
 
 local helpString = ""
-helpString = helpString.."Author:"..AUTHOR"\n"
-helpString = helpString.."VERSON:"..VERSOIN"\n"
+helpString = helpString.."Author:"..AUTHOR.."\n"
+helpString = helpString.."VERSON:"..VERSOIN.."\n"
 helpString = helpString.."Usage:\n"
 helpString = helpString.."\t enable: Enable this mod. \n"
 helpString = helpString.."\t disable: Disable this mod. \n"
@@ -20,10 +20,8 @@ local function init( param )
 
     state = "Raw"
 
-    local cycle = param['commitCycle']
-
-    if not nil == cycle then
-        commitCycle = cycle
+    if not ( nil == param  or nil == param['commitCycle']) then
+        commitCycle = param['commitCycle']
     end
 
     lastCommit = os.time()
@@ -31,7 +29,7 @@ local function init( param )
     state = "Enable"
 end
 
-local function deinit( _ )
+local function deInit( _ )
     state = "Closed"
 end
 
@@ -54,26 +52,21 @@ end
 
 local function modProc()
 
-    state = "Enable"
-
     if not state == "Enable" then
         return
     end
-
 
     local elapsed = os.time() - lastCommit
 
     if elapsed > commitCycle then
 
         lastCommit = os.time()
-
-        -- Set ZK node
+        logger:info("Commit message...")
     end
-
 end
 
 package ['init'] = init
-package ['deinit'] = deinit
+package ['deInit'] = deInit
 package ['ctl'] = ctl
 package ['help'] = helpString
 package ['modProc'] = modProc

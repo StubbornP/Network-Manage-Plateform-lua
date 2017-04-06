@@ -17,7 +17,7 @@ inline int lua_table_set_integer( lua_State *L, const char *key, lua_Integer val
     return 0;
 }
 
-__attribute_used__  inline int lua_table_set_number( lua_State *L, const char *key, lua_Number value){
+UNUSE_DONT_WARNING  inline int lua_table_set_number( lua_State *L, const char *key, lua_Number value){
     lua_pushstring( L, key);
     lua_pushnumber( L, value);
     lua_settable( L, -3);

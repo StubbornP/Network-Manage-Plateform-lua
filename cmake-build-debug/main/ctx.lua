@@ -36,7 +36,7 @@ local function defaultContext()
 
 	ctxSet("pcap.enableOnStartup", true)
 	ctxSet("pcap.source", "file")
-	ctxSet("pcap.device", "wlp3s0")
+	ctxSet("pcap.device", "ens33")
 	ctxSet("pcap.promisc", 0 );
 	ctxSet("pcap.filePath", "./test.pcap")
 

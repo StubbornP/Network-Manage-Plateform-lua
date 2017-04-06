@@ -14,4 +14,6 @@
 
 using namespace std;
 
+#define  UNUSE_DONT_WARNING __attribute_used__
+
 #endif //NETWORKMANAGEPLATEFORM_TYPES_H

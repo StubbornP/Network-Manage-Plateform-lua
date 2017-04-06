@@ -58,17 +58,17 @@ unistd.h
 zookeeper/zookeeper.h
 -
 
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_ctx.cpp
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/lua_ctx.cpp
 lua_ctx.h
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_ctx.h
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/lua_ctx.h
 
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_pcap.cpp
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/lua_pcap.cpp
 types.h
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/types.h
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/types.h
 lua_pcap.h
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_pcap.h
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/lua_pcap.h
 
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/lua_zookeeper.cpp
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/lua_zookeeper.cpp
 string.h
 -
 unistd.h
@@ -76,11 +76,11 @@ unistd.h
 vector
 -
 nmp.h
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.h
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/nmp.h
 
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.cpp
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/nmp.cpp
 types.h
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/types.h
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/types.h
 nmp.h
-/home/stubborn/CLionProjects/Network-Manage-Plateform/src/nmp.h
+/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/nmp.h
 

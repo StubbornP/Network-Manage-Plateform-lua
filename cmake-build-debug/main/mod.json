@@ -2,7 +2,7 @@
   {
     "modName"       :"packetCounter",
     "instanceName"  :"packetCounter-1",
-    "loadOnStartUp" :true,
+    "loadOnStartUp" :false,
     "singleInstance":true,
     "modPackage"    :"mod.modPacketCounter",
     "initParam"     :null

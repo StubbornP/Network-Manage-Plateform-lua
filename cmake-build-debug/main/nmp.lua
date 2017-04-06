@@ -9,6 +9,10 @@ zk		    = require "main.zookeeper"
 pcap     	= require "main.pcap"
 
 monManager  = require "main.modManager"
+p0f         = require "modP0F"
+--nDPI        = require "modNDPI"
+
+p0f['modP0FInit']("./mod/p0f.fp",14)
 
 ctx.defaultCtx( )
 
@@ -42,6 +46,8 @@ if ctx.get( "zookeeper.enableOnStartup" ) == true then
 end
 
 local state = pcap.ModStart()
+
+--nDPI['modNDPIInit'](pcap['getDataLinkType']())
 
 monManager.init()
 

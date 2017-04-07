@@ -10,7 +10,7 @@ pcap     	= require "main.pcap"
 
 monManager  = require "main.modManager"
 p0f         = require "modP0F"
---nDPI        = require "modNDPI"
+nDPI        = require "modNDPI"
 
 p0f['modP0FInit']("./mod/p0f.fp",14)
 
@@ -47,7 +47,7 @@ end
 
 local state = pcap.ModStart()
 
---nDPI['modNDPIInit'](pcap['getDataLinkType']())
+modNDPIInit(pcap['getDataLinkTypeInt']())
 
 monManager.init()
 

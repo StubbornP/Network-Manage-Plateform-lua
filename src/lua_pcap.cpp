@@ -290,6 +290,21 @@ static int lua_pcap_setBPF( lua_State *L){
     return 1;
 }
 
+static int lua_pcap_getDatalinkInt( lua_State *L){
+
+    int dl;
+
+    if( !( Mod_State == RUNNING || Mod_State == PREPARED )){
+        sprintf( lastError, "lua_pcap_datalink: Device not open");
+        lua_pushnil( L );
+    }
+    else{
+        dl = pcap_datalink(pcap);
+        lua_pushinteger( L, dl );
+    }
+    return 1;
+}
+
 static int lua_pcap_getDatalink( lua_State *L){
 
     int dl;
@@ -354,6 +369,7 @@ int lua_pcap_init( lua_State *L ){
     lua_register( L, "pcapClose", lua_pcap_close);
     lua_register( L, "pcapSend", lua_pcap_send);
     lua_register( L, "pcapSetFilter",lua_pcap_setBPF);
+     lua_register( L, "pcapDatalinkTypeInt",lua_pcap_getDatalinkInt);
     lua_register( L, "pcapDatalinkType",lua_pcap_getDatalink);
     lua_register( L, "pcapGetState",lua_pcap_getState);
     lua_register( L, "pcapGetError",lua_pcap_getError);

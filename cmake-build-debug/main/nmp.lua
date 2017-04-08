@@ -11,6 +11,7 @@ pcap     	= require "main.pcap"
 monManager  = require "main.modManager"
 p0f         = require "modP0F"
 nDPI        = require "modNDPI"
+cURL        = require "thirdparty.cURL"
 
 p0f['modP0FInit']("./mod/p0f.fp",14)
 
@@ -38,8 +39,6 @@ end
 
 watcher.Register( "defaultSession", "SESSION_EVENT",defaultSessionWacherCallback)
 watcher.Register( "defaultPcap", "pcapModStateChanged",defaultPcapWacherCallback)
-
-print( ctx.get( "zookeeper.enableOnStartup" ) )
 
 if ctx.get( "zookeeper.enableOnStartup" ) == true then
     zk.connect( )

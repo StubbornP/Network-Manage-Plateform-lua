@@ -38,7 +38,9 @@ local function defaultContext()
 	ctxSet("pcap.source", "file")
 	ctxSet("pcap.device", "ens33")
 	ctxSet("pcap.promisc", 0 );
-	ctxSet("pcap.filePath", "./test_pcap.pcap")
+--	ctxSet("pcap.filePath", "/mnt/hgfs/D/test.pcap")
+	ctxSet("pcap.filePath", "./test.pcap")
+--	ctxSet("pcap.filePath", "./test_pcap.pcap")
 
 	ctxSet("monManager.modJsonFile","./main/mod.json")
 	ctxSet("monManager.relaxInterval", 10000 )

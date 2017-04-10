@@ -13,10 +13,7 @@ p0f         = require "modP0F"
 nDPI        = require "modNDPI"
 cURL        = require "thirdparty.cURL"
 
-p0f['modP0FInit']("./mod/p0f.fp",14)
-
 ctx.defaultCtx( )
-
 
 local function defaultSessionWacherCallback( state, _, _ )
     if state == "CONNECTED_STATE" then
@@ -34,19 +31,26 @@ end
 
 local function defaultPcapWacherCallback( state, _, _ )
 
-    logger:info("PcapWatcher State Changed to: "..state.."Timestamp:"..os.time())
+    logger:info("PcapWatcher State Changed to: "..state..",Timestamp:"..os.time())
+
+    if state == "CLOSED" then
+        logger:info("PCAP CLOSED")
+        modNDPIDestory()
+        p0f['modP0FDestroy']()
+        monManager.shutdown()
+    end
+
 end
 
 watcher.Register( "defaultSession", "SESSION_EVENT",defaultSessionWacherCallback)
 watcher.Register( "defaultPcap", "pcapModStateChanged",defaultPcapWacherCallback)
 
-if ctx.get( "zookeeper.enableOnStartup" ) == true then
-    zk.connect( )
-end
 
 local state = pcap.ModStart()
-
+p0f['modP0FInit']("./mod/p0f.fp",pcap['getDataLinkTypeInt']())
 modNDPIInit(pcap['getDataLinkTypeInt']())
+
+logger:info("memory "..collectgarbage("count"))
 
 monManager.init()
 
@@ -61,8 +65,7 @@ logger:info( "pcap Mod State:" ..  pcap.getLastError() )
 monManager.monManagerRoutine()
 
 pcap.close()
-zk.close()
 
-monManager.relaxMachine( 5000000 )
+monManager.relaxMachine( 1000000 )
 
 monManager.shutdown()

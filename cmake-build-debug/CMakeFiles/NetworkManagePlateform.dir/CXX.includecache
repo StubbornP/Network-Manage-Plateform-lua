@@ -41,6 +41,8 @@ lua_ctx.h
 .././include/lua_ctx.h
 lua_zookeeper.h
 .././include/lua_zookeeper.h
+stdlib.h
+-
 lua_lpack.h
 .././include/lua_lpack.h
 

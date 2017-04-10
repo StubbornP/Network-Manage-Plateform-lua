@@ -3,13 +3,13 @@
 
 # compile C with /usr/bin/cc
 # compile CXX with /usr/bin/c++
-C_FLAGS = -g  
+C_FLAGS = -pg -g  
 
 C_DEFINES = 
 
 C_INCLUDES = -I/home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/./include 
 
-CXX_FLAGS = -g   -std=gnu++11
+CXX_FLAGS = -pg -g   -std=gnu++11
 
 CXX_DEFINES = 
 

@@ -10,6 +10,7 @@
 #include "lua_pcap.h"
 #include "lua_ctx.h"
 #include "lua_zookeeper.h"
+#include <stdlib.h>
 
 extern "C"{
 

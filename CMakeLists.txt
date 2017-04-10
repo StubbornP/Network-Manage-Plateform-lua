@@ -21,5 +21,7 @@ find_library(
         PATHS /usr/lib /usr/local/lib
         )
 SET(ZKLIB /usr/local/lib/libzookeeper_mt.so)
+set( CMAKE_C_FLAGS  ${CMAKE_C_FLAGS} -pg)
+set( CMAKE_CXX_FLAGS   ${CMAKE_CXX_FLAGS} -pg)
 
-target_link_libraries(NetworkManagePlateform ${LUALIB} ${ZKLIB} -lpthread -ldl -lpcap)
+target_link_libraries(NetworkManagePlateform ${LUALIB} ${ZKLIB} -lpthread -ldl -lpcap -pg)

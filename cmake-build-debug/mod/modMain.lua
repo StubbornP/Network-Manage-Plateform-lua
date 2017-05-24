@@ -8,9 +8,11 @@
 
 local package = {}
 
+local data_logger = require "mod.dummylog"
+
 local AUTHOR = "STUBBORN"
 local VERSOIN = "1.0"
-local MODNAME = "mainMOD"
+local MODNAME = "modMain"
 
 local msg_pool_size = 1
 local msg_pool = {}
@@ -23,11 +25,13 @@ local host_link           = {}
 local host_port         = {}
 local host_app_proto    = {}
 
+local data_tag = 'NOT SET'
+
 local function flush_msg( )
 
     if not( #msg_pool == 0) then
-        local data = json.encode(msg_pool)
-        print(data)
+        local pool = msg_pool
+        data_logger.eventLog(pool)
     end
     msg_pool = {}
     msg_pool_size = 1
@@ -53,6 +57,7 @@ local function hostOnlineProc( analyseResult )
         msg_pool[msg_pool_size]["type"] = "HOST_ONLINE";
         msg_pool[msg_pool_size]["ip"] = IP;
         msg_pool[msg_pool_size]["min_ts"] = min_ts;
+        msg_pool[msg_pool_size]["data-tag"] = data_tag;
 
         msg_pool_size = msg_pool_size + 1;
     end
@@ -100,6 +105,7 @@ local function hostPacketsBytes( analyseResult )
         msg_pool[msg_pool_size]["packets_send"] = info['packets_send'];
         msg_pool[msg_pool_size]["bytes_recv"] = info['bytes_recv'];
         msg_pool[msg_pool_size]["packets_recv"] = info['packets_recv'];
+        msg_pool[msg_pool_size]["data-tag"] = data_tag;
 
         msg_pool_size = msg_pool_size + 1;
     end
@@ -161,7 +167,7 @@ local function hostOS( analyseResult )
         msg_pool[msg_pool_size]["ip"] = IP;
         msg_pool[msg_pool_size]["ts"] = ts;
         msg_pool[msg_pool_size]["os"] = os;
-        msg_pool[msg_pool_size]["type"] = type;
+        msg_pool[msg_pool_size]["data-tag"] = data_tag;
 
         msg_pool_size = msg_pool_size + 1;
 
@@ -173,7 +179,7 @@ local function hostOS( analyseResult )
         msg_pool[msg_pool_size]["ip"] = IP;
         msg_pool[msg_pool_size]["ts"] = ts;
         msg_pool[msg_pool_size]["link"] = link;
-        msg_pool[msg_pool_size]["type"] = type;
+        msg_pool[msg_pool_size]["data-tag"] = data_tag;
 
         msg_pool_size = msg_pool_size + 1;
 
@@ -201,26 +207,39 @@ local function hostOS( analyseResult )
     if (not (os == nil)) then
         if host_os[subject] == nil then
             host_os[subject] = {}
+        end
+        if host_os[subject] [os] == nil then
             host_os[subject] [os] = sec_mod_60;
             post_host_os_msg( subject, os, sec_mod_60, "TCP_STACK" )
         end
+
         if not (host_os[subject][os] == sec_mod_60) then
             post_host_os_msg( subject, os,  host_os[subject][os], "TCP_STACK" )
             host_os[subject][os] = sec_mod_60
         end
     end
 
-    if (not (link == nil)) then
-        if host_link[subject] == nil then
-            host_link[subject] = {}
-            host_link[subject] [link] = sec_mod_60;
-            post_host_link_msg( subject, link, sec_mod_60, "MTU" )
-        end
-        if not (host_link[subject][link] == sec_mod_60) then
-            post_host_link_msg( subject, link,  host_link[subject][os], "MTU" )
-            host_link[subject][link] = sec_mod_60
+    local function account_link(sub,link,sec)
+        if (not (link == nil)) then
+            if host_link[sub] == nil then
+                host_link[sub] = {}
+            end
+
+            if host_link[sub] [link]== nil then
+
+                host_link[sub] [link] = sec;
+                post_host_link_msg( sub, link, sec, "MTU" )
+            end
+
+            if not (host_link[sub][link] == sec) then
+                post_host_link_msg( sub, link,  host_link[sub][link], "MTU" )
+                host_link[sub][link] = sec
+            end
         end
     end
+
+    account_link( clientAddr,link,sec_mod_60)
+    account_link( serverAddr,link,sec_mod_60)
 end
 
 local function hostPortPktByte( analyseResult )
@@ -247,6 +266,7 @@ local function hostPortPktByte( analyseResult )
         msg_pool[msg_pool_size]["packets_send"] = info['packets_send'];
         msg_pool[msg_pool_size]["bytes_recv"] = info['bytes_recv'];
         msg_pool[msg_pool_size]["packets_recv"] = info['packets_recv'];
+        msg_pool[msg_pool_size]["data-tag"] = data_tag;
 
         msg_pool_size = msg_pool_size + 1;
 
@@ -329,16 +349,18 @@ local function hostAppPktByte( analyseResult )
     local detected_proto    = nDPI['detected.protocol.name']
     local packet_bytes      = nDPI['bytes']
     local packet_count      = nDPI['packets']
-    local ts_sec               = analyseResult['PktTs_sec']
+    local ts_sec            = analyseResult['PktTs_sec']
 
-    local function post_host_app_msg( host, proto)
+    local function post_host_app_msg( host, proto,ts)
 
         msg_pool[msg_pool_size] = {}
         msg_pool[msg_pool_size]["type"] = "HOST_APP_PKT_BYTE";
         msg_pool[msg_pool_size]["ip"] = host;
+        msg_pool[msg_pool_size]["ts"] = ts;
         msg_pool[msg_pool_size]["proto"] = proto;
-        msg_pool_size = msg_pool_size + 1;
+        msg_pool[msg_pool_size]["data-tag"] = data_tag;
 
+        msg_pool_size = msg_pool_size + 1;
     end
 
     local function buildHostAppData( host, ts)
@@ -366,7 +388,7 @@ local function hostAppPktByte( analyseResult )
                     + host_app_proto[host]['protos'][proto]['bytes']
         else
 
-            post_host_app_msg(host,host_app_proto[host]['protos'])
+            post_host_app_msg(host,host_app_proto[host]['protos'],host_app_proto[host]['ts'] )
             host_app_proto[host]['ts'] = sec
             host_app_proto[host]['protos'] = {}
         end
@@ -381,6 +403,51 @@ local function hostAppPktByte( analyseResult )
 
 end
 
+local function hostHTTPUA( analyseResult)
+
+    if not ( nil == analyseResult['HTTP.UA']) then
+
+        local ua                = analyseResult['HTTP.UA']
+        local ts_sec            = analyseResult['PktTs_sec']
+
+        local function post_host_os_msg( IP, ua, ts,type )
+            msg_pool[msg_pool_size] = {}
+            msg_pool[msg_pool_size]["type"] = "HOST_UA_PROCESS"
+            msg_pool[msg_pool_size]["ip"] = IP
+            msg_pool[msg_pool_size]["ts"] = ts
+            msg_pool[msg_pool_size]["ua"] = ua
+            msg_pool[msg_pool_size]["data-tag"] = data_tag
+
+            msg_pool_size = msg_pool_size + 1
+        end
+    end
+
+end
+
+local function hostHTTPBUG( analyseResult)
+
+    local srcIP             = analyseResult['IP.Source']
+    local ts_sec            = analyseResult['PktTs_sec']
+    local ts_sec_mod60      = ts_sec - ts_sec % 60
+
+    local function post_host_bug_msg( host, bug,ts)
+
+        msg_pool[msg_pool_size] = {}
+        msg_pool[msg_pool_size]["type"] = "HOST_BUGFIX"
+        msg_pool[msg_pool_size]["ip"] = host
+        msg_pool[msg_pool_size]["ts"] = ts
+        msg_pool[msg_pool_size]["bug"] = bug
+
+        msg_pool_size = msg_pool_size + 1
+    end
+
+    local bug = analyseResult['HTTP.BUGFIX']
+
+    if not ( nil == bug ) then
+        post_host_bug_msg( srcIP, bug, ts_sec_mod60 )
+    end
+end
+
 local function dataCollector( _, analyseResult)
 
     hostOnlineProc(analyseResult)
@@ -388,10 +455,15 @@ local function dataCollector( _, analyseResult)
     hostOS(analyseResult)
     hostPortPktByte(analyseResult)
     hostAppPktByte(analyseResult)
+    hostHTTPUA(analyseResult)
+    hostHTTPBUG(analyseResult)
+
     flush_msg()
 end
 
 local function GCOnClose(state, _, _ )
+
+    data_logger.flushAll()
     if state == "CLOSED" then
         logger:info("modMainGC")
 
@@ -410,15 +482,15 @@ end
 
 local function init( _ )
 
+    data_tag = ctx.get('pcap.data-tag')
+    data_logger.init()
     pcap.registerSubscriber( "mainDataCollector", dataCollector )
     watcher.Register( "modMainGC", "pcapModStateChanged",GCOnClose)
-
 end
 
 local function deInit( _ )
-
+    data_logger.deInit()
     pcap.unregisterSubscriber( "mainDataCollector")
-
 end
 
 local function ctl( paramTable )
@@ -430,9 +502,7 @@ local function ctl( paramTable )
 end
 
 local function modProc()
-
     -- mod main proc
-
 end
 
 package ['init'] = init

@@ -85,4 +85,8 @@ types.h
 /home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/types.h
 nmp.h
 /home/ubuntu/CLionProjects/Network-Manage-Plateform-lua/src/nmp.h
+getopt.h
+-
+cstring
+-
 

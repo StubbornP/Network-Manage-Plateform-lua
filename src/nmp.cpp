@@ -4,9 +4,14 @@
 
 #include "types.h"
 #include "nmp.h"
+#include <getopt.h>
+#include <cstring>
 
 lua_State   *pMachine = NULL;
 pthread_mutex_t Machine_Lock;
+
+static char env_buf[BUFSIZ] = {0};
+
 
 lua_State *aquireMachine(){
     pthread_mutex_lock(&Machine_Lock);
@@ -65,18 +70,35 @@ int deInit(){
     return 0;
 }
 
-static int opt_routine( int /* argc*/, char** /* argv */){
+static int opt_routine( int  argc, char**  argv ){
 
     //OptGet Code Here!
 
+    int     oc;
+
+    while(  -1 !=( oc = getopt( argc, argv, "e:"))){
+
+        switch(oc){
+
+            case 'e':
+
+                if( strlen( optarg ) > 0 ){
+                    strcpy( env_buf, optarg );
+                    ctxSetString( pMachine ,"env", env_buf);
+                }
+                break;
+            default:
+                break;
+        }
+    }
     return  0;
 }
 
 int main(int argc, char** argv){
 
+    init();                     // Init the running environment
     opt_routine(argc,argv);
 
-    init();                     // Init the running environment
 
     aquireMachine();
 

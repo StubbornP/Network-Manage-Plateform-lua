@@ -5,29 +5,15 @@ ctx 		= require "main.ctx"
 completion 	= require "main.completion"
 watcher 	= require "main.watcher"
 
-zk		    = require "main.zookeeper"
 pcap     	= require "main.pcap"
-
 monManager  = require "main.modManager"
+
 p0f         = require "modP0F"
 nDPI        = require "modNDPI"
 cURL        = require "thirdparty.cURL"
+env         = ctx.get('env')
 
 ctx.defaultCtx( )
-
-local function defaultSessionWacherCallback( state, _, _ )
-    if state == "CONNECTED_STATE" then
-        logger:info("Connection Established Successfully ...")
-    elseif state == "AUTH_FAILED_STATE" then
-        logger:warning("Authentication failure. Shutting down ...")
-    elseif state == "EXPIRED_SESSION_STATE" then
-        logger:warning("Session expired. Shutting down ...")
-        zk.Close()
-    else
-        logger:error("Unkown SESSION_EVENT ...")
-        zk.Close()
-    end
-end
 
 local function defaultPcapWacherCallback( state, _, _ )
 
@@ -42,11 +28,10 @@ local function defaultPcapWacherCallback( state, _, _ )
 
 end
 
-watcher.Register( "defaultSession", "SESSION_EVENT",defaultSessionWacherCallback)
 watcher.Register( "defaultPcap", "pcapModStateChanged",defaultPcapWacherCallback)
 
-
 local state = pcap.ModStart()
+
 p0f['modP0FInit']("./mod/p0f.fp",pcap['getDataLinkTypeInt']())
 modNDPIInit(pcap['getDataLinkTypeInt']())
 
